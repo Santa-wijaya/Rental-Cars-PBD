@@ -1,0 +1,47 @@
+
+.about{
+	background-color: black;
+    text-align : center;
+    padding : 10px;
+}
+
+.about a{
+    color : white;
+    text-decoration: none;
+
+}
+
+.next{
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+}
+
+
+.right {
+    width:150px;
+    float:left;
+    margin-right:15px;
+    border: 0px solid #73AD21;
+    padding: 10px;
+}
+
+.flexing{
+    overflow-x: hidden;
+	margin-left: 250px;
+	padding-top: 86px;
+}
+
+.top-buffer{ 
+    margin-top:40px; 
+}
+
+.img{
+    width: 150px;
+    height: 150px;
+}
+
+
+.tengah{
+    margin:auto;
+}

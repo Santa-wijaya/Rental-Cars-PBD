@@ -95,30 +95,7 @@ function delete_unit($record){
 	return false; 
 }
 
-// function insert_helper($record, $img) {
-// 	global $conn;
-// 	$nama_helper = htmlspecialchars($record["nama-helper"]);
-// 	$jenis_kelamin_helper = htmlspecialchars($record["jenisKelamin"]);
-// 	$harga = htmlspecialchars($record["harga"]);
-// 	$nama_foto = $img['foto-helper']['name'];
-// 	$tipe_file = $img['foto-helper']['type'];
-// 	$file_path_sementara = $img['foto-helper']['tmp_name'];
-// 	$dummy = explode("/", $tipe_file);
-// 	$ekstensi = "." . $dummy[1];
-// 	$nama_foto_simpan = uniqid() . $ekstensi;
-// 	if(!check_file_type($tipe_file)) {
-// 		return false;
-// 	} elseif ($img['foto-helper']['size'] > 500000) {
-// 		return false;
-// 	}
-// 	move_uploaded_file($file_path_sementara, 'Images/Helper/' . $nama_foto_simpan);
-// 	// $query = "INSERT INTO helper VALUES('', '$nama_helper', '$jenis_kelamin_helper', $harga, '$nama_foto_simpan')";
-// 	$query = "CALL input_data_helper('$nama_helper', '$jenis_kelamin_helper', $harga, '$nama_foto_simpan')";
-// 	if(execute_query($query)){
-// 		return true;
-// 	}
-// 	return false;
-// }
+
 
 function insert_vehicle($record, $img) {
 	global $conn;
@@ -137,7 +114,7 @@ function insert_vehicle($record, $img) {
 		return false;
 	}
 	move_uploaded_file($file_path_sementara, 'Images/TipeMobil/' . $nama_foto_simpan);
-	// $query = "INSERT INTO tipe_kendaraan VALUES('', '$model_kendaraan', '$manufaktur', $harga, '$nama_foto_simpan')";
+	$query = "INSERT INTO tipe_kendaraan VALUES('', '$model_kendaraan', '$manufaktur', $harga, '$nama_foto_simpan')";
 	$query = "CALL input_data_model_kendaraan('$model_kendaraan', '$manufaktur', $harga, '$nama_foto_simpan')";
 	if(execute_query($query)){
 		return true;
@@ -176,36 +153,7 @@ function update_driver($record, $img) {
 	return false;
 }
 
-// function update_helper($record, $img) {
-// 	global $conn;
-// 	$id = htmlspecialchars($record["id-helper"]);
-// 	$nama_helper = htmlspecialchars($record["nama-helper-update"]);
-// 	$jenis_kelamin_helper = htmlspecialchars($record["jenisKelamin-update"]);
-// 	$harga = htmlspecialchars($record["harga-helper-update"]);
-// 	if($img["foto-helper-update"]["error"] == 4) {
-// 		$query = "CALL update_data_helper_tanpa_foto($id, '$nama_helper', '$jenis_kelamin_helper', $harga);";
-// 		// $query = "UPDATE helper SET nama = '$nama_helper', jenis_kelamin = '$jenis_kelamin_helper', tarif = $harga WHERE ID_helper = $id;";
-// 	} else {
-// 		$nama_foto = $img['foto-helper-update']['name'];
-// 		$tipe_file = $img['foto-helper-update']['type'];
-// 		$file_path_sementara = $img['foto-helper-update']['tmp_name'];
-// 		$dummy = explode("/", $tipe_file);
-// 		$ekstensi = "." . $dummy[1];
-// 		$nama_foto_simpan = uniqid() . $ekstensi;
-// 		if(!check_file_type($tipe_file)) {
-// 			return false;
-// 		} elseif ($img['foto-helper-update']['size'] > 500000) {
-// 			return false;
-// 		}
-// 		move_uploaded_file($file_path_sementara, 'Images/Helper/' . $nama_foto_simpan);
-// 		$query = "CALL update_data_helper($id, '$nama_helper', '$jenis_kelamin_helper', $harga, '$nama_foto_simpan');";
-// 		// $query = "UPDATE helper SET nama = '$nama_helper', jenis_kelamin = '$jenis_kelamin_helper', tarif = $harga, nama_foto = '$nama_foto_simpan' WHERE ID_helper = $id;";
-// 	}
-// 	if(execute_query($query)){
-// 		return true;
-// 	}
-// 	return false;
-// }
+
 
 function update_vehicle($record, $img) {
 	global $conn;
@@ -245,14 +193,7 @@ function delete_driver($driver_p_k) {
 	return false;
 }
 
-// function delete_helper($helper_p_k) {
-// 	global $conn;
-// 	$query = "DELETE FROM helper WHERE ID_helper = $helper_p_k;";
-// 	if(execute_query($query)){
-// 		return true;
-// 	}
-// 	return false;
-// }
+
 
 function delete_vehicle($model_p_k) {
 	global $conn;
@@ -381,7 +322,6 @@ function request_peminjaman($record, $id_model) {
 function accept_peminjaman($record) {
 	// assign ke variabel
 	$id_peminjaman = $record["ID-peminjaman-accept"];
-	// $jumlah_helper = $record["jumlah-helper-accept"];
 	$status_driver = $record["butuh-driver-accept"];
 	$id_kendaraan = $record["unit-kendaraan"];
 
@@ -402,20 +342,7 @@ function accept_peminjaman($record) {
 
 	$query2 = "";
 	
-	// if ($jumlah_helper == 1) {
-	// 	$id_helper1 = $record["helper-2"];
-	// 	if ($id_helper1 == -1) {
-	// 		return 0;
-	// 	}
-	// 	$query2 = " INSERT INTO reservasi_helper (ID_peminjaman, ID_helper) VALUES ($id_peminjaman, $id_helper1)";
-	// } elseif ($jumlah_helper == 2){
-	// 	$id_helper1 = $record["helper-1"];
-	// 	$id_helper2 = $record["helper-2"];
-	// 	if ($id_helper1 == -1 || $id_helper2 == -1) {
-	// 		return 0;
-	// 	}
-	// 	$query2 = " INSERT INTO reservasi_helper (ID_peminjaman, ID_helper) VALUES ($id_peminjaman, $id_helper1); INSERT INTO reservasi_helper (ID_peminjaman, ID_helper) VALUES ($id_peminjaman, $id_helper2);";
-	// }
+	
 
 
 	$concatted_query = $query . $query2;

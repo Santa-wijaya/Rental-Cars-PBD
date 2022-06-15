@@ -80,7 +80,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="beranda_user.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     
                 </div>
@@ -268,7 +268,7 @@
           <?php unset($_SESSION["bool_status_accept"]); ?>
         <?php elseif(isset($_SESSION["bool_status_accept"]) && $_SESSION["bool_status_accept"] == 0):?>
           <div class="col-xxl-11 mt-5 col-md-10 col-sm-10 col-lg-10 col-9 alert alert-danger alert-dismissible fade show mx-auto" role="alert">
-              Lengkapi data unit kendaraan, driver.!
+              Lengkapi data unit kendaraan, driver, ataupun helper!
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           <?php unset($_SESSION["bool_status_accept"]); ?>
@@ -314,7 +314,7 @@
                         <?php else: ?>
                           <td>Ya</td>
                         <?php endif?>
-                        <!-- <td><?= $tuple["jumlah_helper"] ?></td> -->
+                        
                         <td><a class="btn btn-success mx-1 mt-1 mb-1" href="#" role="button" onclick='terimaRequest(<?php echo ($tuple["opsi_driver"]); ?>, <?php echo ($tuple["jumlah_helper"]); ?>, <?php echo ($tuple["ID_peminjaman"]); ?>, <?php echo json_encode($unit_kendaraan); ?>)'>Terima</a>
                         <a class="btn btn-danger mt-1 mb-1" href="#" role="button" onclick="tolakRequest(<?= $tuple['ID_peminjaman'] ?>)">Tolak</a></td>
                     </tr>
@@ -375,10 +375,7 @@
                     <label for="ID-peminjaman-accept" class="col-form-label">ID peminjaman</label>
                     <input type="text" class="form-control" id="ID-peminjaman-accept" name="ID-peminjaman-accept" readonly>
               </div>
-              <div class="form-group">
-                    <label for="jumlah-helper-accept" class="col-form-label d-none">Jumlah Helper</label>
-                    <input type="number" class="form-control d-none" id="jumlah-helper-accept" name="jumlah-helper-accept" readonly>
-              </div>
+              
               <div class="form-group">
                     <label for="butuh-driver-accept" class="col-form-label">Butuh Driver</label>
                     <input type="number" class="form-control" id="butuh-driver-accept" name="butuh-driver-accept" readonly>
